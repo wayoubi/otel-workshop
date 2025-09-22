@@ -43,7 +43,7 @@ services:
       context: ./src/data-processing
     restart: unless-stopped
     ports:
-      - 9000
+      - 9000:9000
     environment:
       - TEMP_CALCULATOR_ADDR=http://temperature-calculator:8088
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otelcol:4317
@@ -56,7 +56,7 @@ services:
   # OpenTelemetry Collector
   otelcol:
     container_name: otelcol
-    image: otel/opentelemetry-collector-contrib:0.101.0
+    image: otel/opentelemetry-collector-contrib:0.136.0-nightly.ec8d2bc-arm64@sha256:8351dbc598b5cee6c22f4fd4803e8cda058c002ed5f370eedca0ad6063ede422
     deploy:
       resources:
         limits:
@@ -70,8 +70,8 @@ services:
       - ./src/otelcollector/otelcol-config.yml:/etc/otelcol-config.yml
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 4317
-      - 4318
+      - 4317:4317
+      - 4318:4318   
     environment:
       - DD_SITE
       - DD_API_KEY
