@@ -6,7 +6,6 @@
  - It is an open standard for collecting and exporting telemetry data.
  - It is an open-source project that provides a set of tools, APIs, and SDKs for observability—specifically for collecting and exporting metrics, logs, and traces from applications.
  - OpenTelemetry  is a [CNCF](https://cncf.io/)  incubating project, as of August 26, 2021.
-![cncf](https://www.cncf.io/wp-content/uploads/2023/04/cncf-main-site-logo.svg)
 
 ## Why use OpenTelemetry
 
