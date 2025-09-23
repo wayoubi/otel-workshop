@@ -13,19 +13,29 @@ processors:
         value: "otel-course"
         action: upsert
 exporters:
+  otlp/jaeger:
+    endpoint: "jaeger:4317"
+    tls:
+      insecure: true
   debug:
     verbosity: detailed
+  datadog:
+    api:
+      site: ${DD_SITE}
+      key: ${DD_API_KEY}
+connectors:
+  datadog/connector:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [resource, batch]
-      exporters: [debug]
+      exporters: [debug, datadog, otlp/jaeger, datadog/connector]
     metrics:
-      receivers: [otlp]
+      receivers: [otlp, datadog/connector]
       processors: [resource, batch]
-      exporters: [debug]
+      exporters: [debug, datadog]
     logs:
       receivers: [otlp]
       processors: [resource, batch]
-      exporters: [debug]
+      exporters: [debug, datadog]
