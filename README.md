@@ -1,3 +1,7 @@
+![opentelemtry](https://opentelemetry.io/img/logos/opentelemetry-horizontal-color.svg)
+![cncf](https://www.cncf.io/wp-content/uploads/2023/04/cncf-main-site-logo.svg)
+
+
 ## OpenTelemetry
 
  - It is an open standard for collecting and exporting telemetry data.
