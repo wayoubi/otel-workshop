@@ -12,7 +12,9 @@
     class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
   </appender>
 
-  <root level="DEBUG">
+  <logger name="io.temp.simulator" level="DEBUG"/>
+
+  <root level="INFO">
     <appender-ref ref="console"/>
     <appender-ref ref="OpenTelemetry"/>
   </root>
