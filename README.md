@@ -47,3 +47,31 @@ The application is already instrumented with OTel.
 The Temperature Simulator and Calculator services use the  [zero-code/auto instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/)  to provide telemetry data for the libraries being used such as those for HTTP requests and responses.
 
 The Data Processing service is written in Rust, which doesn’t has zero-code instrumentation, it is instrumented manually using  `actix-web-opentelemetry`  package.
+
+## Semantic Versioning
+
+This repository uses [GitVersion](https://gitversion.net/) to automatically generate semantic versions based on Git history and commit conventions.
+
+### How it works
+
+- Every push to the `main` branch triggers the semantic versioning workflow
+- GitVersion analyzes the Git history and generates a semantic version (e.g., `1.2.3`)
+- The workflow automatically creates and pushes a Git tag with the version number
+- Version numbers follow the [Semantic Versioning 2.0.0](https://semver.org/) specification
+
+### Configuration
+
+The versioning behavior is configured in `GitVersion.yml`:
+- **Main branch**: Uses ContinuousDelivery mode with Patch increment
+- **Feature branches**: Inherit version increment with branch name tag
+- **Pull requests**: Tagged with PullRequest label
+
+### Version outputs
+
+The workflow provides multiple version formats:
+- `SemVer`: Standard semantic version (e.g., `1.2.3`)
+- `FullSemVer`: Full semantic version with pre-release and metadata
+- `MajorMinorPatch`: Just the version numbers
+- And many other formats for different use cases
+
+Check the workflow run logs to see all available version outputs.
