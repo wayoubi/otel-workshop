@@ -1,0 +1,50 @@
+name: PR Check - Build and Compile
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build-java-apps:
+    name: Build Java Applications
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+      
+      - name: Build temperature-calculator
+        run: |
+          cd src/temperature-calculator
+          ./mvnw clean compile -DskipTests
+      
+      - name: Build temperature-simulator
+        run: |
+          cd src/temperature-simulator
+          ./mvnw clean compile -DskipTests
+
+  build-rust-app:
+    name: Build Rust Application
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      
+      - name: Set up Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Build data-processing
+        run: |
+          cd src/data-processing
+          cargo build --release
