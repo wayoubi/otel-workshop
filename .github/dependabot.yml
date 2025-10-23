@@ -1,0 +1,51 @@
+# Dependabot configuration for automated dependency updates
+# See: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Monitor Maven dependencies for temperature-simulator Spring Boot application
+  - package-ecosystem: "maven"
+    directory: "/src/temperature-simulator"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
+      - "temperature-simulator"
+
+  # Monitor Maven dependencies for temperature-calculator Spring Boot application
+  - package-ecosystem: "maven"
+    directory: "/src/temperature-calculator"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
+      - "temperature-calculator"
+
+  # Monitor GitHub Actions in workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+  # Monitor Cargo dependencies for data-processing Rust application
+  - package-ecosystem: "cargo"
+    directory: "/src/data-processing"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "rust"
+      - "data-processing"
