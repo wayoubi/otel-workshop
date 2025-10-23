@@ -32,6 +32,6 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: 'corretto' # See 'Supported distributions' for available options
-          java-version: '17'
+          java-version: '21'
       - name: Verify Java installation
         run: java -version
