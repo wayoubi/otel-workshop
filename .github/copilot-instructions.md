@@ -25,7 +25,7 @@ For rust data processing application, follow this flow:
 - `src/temperature-simulator`: spring-boot application for simulating temperature data
 
 ## Key Guidelines
-1. Follow Go best practices and idiomatic patterns
+1. Follow Java best practices and idiomatic patterns
 2. Maintain existing code structure and organization
 3. Use dependency injection patterns where appropriate
 4. Write unit tests for new functionality. Use table-driven unit tests when possible.
