@@ -36,6 +36,7 @@ public class TemperatureController {
   @GetMapping("/simulateTemperature")
   public List<Integer> simulateTemperature(@RequestParam("location") Optional<String> location,
       @RequestParam("measurements") Optional<Integer> measurements) {
+    logger.debug("Starting simulateTemperature method");
 
     Span span = tracer.spanBuilder("GET /simulateTemperature")
         .setSpanKind(SpanKind.SERVER)

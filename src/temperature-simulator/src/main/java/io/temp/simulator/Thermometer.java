@@ -12,6 +12,8 @@ import io.opentelemetry.context.Context;
 import io.opentelemetry.context.propagation.TextMapSetter;
 import io.opentelemetry.context.Scope;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +27,7 @@ import java.util.List;
 
 @Component
 public class Thermometer {
+  private static final Logger logger = LoggerFactory.getLogger(Thermometer.class);
 
   @Autowired
   private RestTemplate restTemplate;
@@ -43,6 +46,7 @@ public class Thermometer {
   }
 
   public List<Integer> process(int measurements) {
+    logger.debug("Starting process method with {} measurements", measurements);
     Span span = tracer.spanBuilder("process")
         .setSpanKind(SpanKind.CLIENT)
         .startSpan();

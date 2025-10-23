@@ -5,6 +5,8 @@
     <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
   </appender>
 
+  <logger name="io.temp.calculator" level="DEBUG"/>
+
   <root level="INFO">
     <appender-ref ref="console"/>
   </root>

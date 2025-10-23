@@ -16,6 +16,7 @@ public class CalculatorController {
 
   @GetMapping("/measureTemperature")
   public int measureTemperature(HttpServletRequest request) {
+    logger.debug("Starting measureTemperature method");
     int temperature = thermometer.measureOnce();
     logger.info("Temperature measured: " + temperature + "/n");
     return temperature;
