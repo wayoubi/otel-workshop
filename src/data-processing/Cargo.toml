@@ -11,7 +11,7 @@ path = "src/main.rs"
 actix-web = "4"
 awc = { version = "3.7", default-features = false, features = ["compress-zstd"] }
 log = "0.4"
-tokio = { version = "1.42", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.48", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["json"] }
 
