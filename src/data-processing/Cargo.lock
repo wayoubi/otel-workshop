@@ -448,7 +448,7 @@ dependencies = [
  "awc",
  "log",
  "opentelemetry 0.22.0",
- "opentelemetry-otlp",
+ "opentelemetry-otlp 0.31.0",
  "opentelemetry_sdk 0.31.0",
  "tokio",
  "tracing",
