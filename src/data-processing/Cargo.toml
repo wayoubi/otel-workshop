@@ -18,5 +18,5 @@ tracing-subscriber = { version = "0.3", features = ["json"] }
 # OpenTelemetry dependencies
 actix-web-opentelemetry = { version = "0.17.0", features = ["sync-middleware", "awc"] }
 opentelemetry = { version = "0.22", features = ["trace"] }
-opentelemetry_sdk = { version = "0.22", features = ["rt-tokio"]}
+opentelemetry_sdk = { version = "0.31", features = ["rt-tokio"]}
 opentelemetry-otlp = { version = "0.15.0", features = ["tokio", "trace"] }
