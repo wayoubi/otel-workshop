@@ -9,14 +9,14 @@ path = "src/main.rs"
 
 [dependencies]
 actix-web = "4"
-awc = { version = "3.7", default-features = false, features = ["compress-zstd"] }
+awc = { version = "3.8", default-features = false, features = ["compress-zstd"] }
 log = "0.4"
-tokio = { version = "1.42", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.48", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["json"] }
 
 # OpenTelemetry dependencies
-actix-web-opentelemetry = { version = "0.17.0", features = ["sync-middleware", "awc"] }
-opentelemetry = { version = "0.31", features = ["trace"] }
-opentelemetry_sdk = { version = "0.31", features = ["rt-tokio"]}
-opentelemetry-otlp = { version = "0.31", features = ["tokio", "trace"] }
+actix-web-opentelemetry = { version = "0.22.0", features = ["sync-middleware", "awc"] }
+opentelemetry = { version = "0.22", features = ["trace"] }
+opentelemetry_sdk = { version = "0.22", features = ["rt-tokio"]}
+opentelemetry-otlp = { version = "0.15.0", features = ["tokio", "trace"] }
