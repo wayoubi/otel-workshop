@@ -1,29 +1,16 @@
+workflow: GitHubFlow/v1
 mode: ContinuousDelivery
+major-version-bump-message: \+semver:\s?(breaking|major)
+minor-version-bump-message: \+semver:\s?(feature|minor)
+patch-version-bump-message: \+semver:\s?(fix|patch)
+assembly-informational-format: '{Major}.{Minor}.{Patch}+{BranchName}.{ShortSha}'
+strategies:
+  - Mainline
 branches:
-  master:
-    regex: ^master$
-    mode: ContinuousDelivery
-    increment: Patch
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: true
-  feature:
-    regex: ^features?[/-]
-    mode: ContinuousDelivery
-    increment: Inherit
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: false
   pull-request:
-    regex: ^(pull|pull\-requests|pr)[/-]
-    mode: ContinuousDelivery
-    increment: Inherit
-    track-merge-target: false
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: false
-ignore:
-  sha: []
-merge-message-formats: {}
+    increment: Patch
+  release:  
+    increment: Patch
+    regex: ^(?<BranchName>PCC-.+)
+  feature:
+    regex: ^(?<BranchName>SRE-.+)

@@ -1,9 +1,9 @@
-name: Semantic Versioning
+name: Semantic Versioning 
+run-name: "gitversion ref:${{ github.ref_name }} sha:${{ github.sha }} event:${{ github.event_name }} action:${{ github.event.action }}"
 
 on:
-  push:
-    branches:
-      - master
+  push: 
+  pull_request:
 
 jobs:
   versioning:
@@ -20,14 +20,11 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v4.1.0
         with:
-          versionSpec: '6.x'
+          versionSpec: '6.3.x'
       
       - name: Determine Version
         id: gitversion
         uses: gittools/actions/gitversion/execute@v4.1.0
-        with:
-          useConfigFile: true
-          configFilePath: GitVersion.yml
       
       - name: Display GitVersion outputs
         run: |
@@ -68,5 +65,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ steps.gitversion.outputs.semVer }}" -m "Release version ${{ steps.gitversion.outputs.semVer }}"
+          git tag -a "v${{ steps.gitversion.outputs.semVer }}" -m "creating tag ${{ steps.gitversion.outputs.semVer }}"
           git push origin "v${{ steps.gitversion.outputs.semVer }}"
+          echo "New tag <a href=\"../../releases/tag/v${{ steps.gitversion.outputs.semVer }}\"> v${{ steps.gitversion.outputs.semVer }} </a> is created from  ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
