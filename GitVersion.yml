@@ -11,6 +11,6 @@ branches:
     increment: Patch
   release:  
     increment: Patch
-    regex: ^(?<BranchName>PCC-.+)
+    regex: ^releases?[\/-](?<BranchName>.+)
   feature:
-    regex: ^(?<BranchName>SRE-.+)
+    regex: ^features?[\/-](?<BranchName>.+)
