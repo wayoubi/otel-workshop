@@ -93,8 +93,11 @@ services:
       - default
 
   ebpf-instrumenter:
+    depends_on:
+      otelcol:
+        condition: service_started
     container_name: ebpf-instrumenter
-    image: docker.io/otel/ebpf-instrument:main
+    image: docker.io/otel/ebpf-instrument:v0.2.0@sha256:19629e07768326acfe52054d9d29fb85ef8bd50c9d0130bcf01743cf199dc527
     pid: 'host'
     privileged: true
     ports:
@@ -103,4 +106,3 @@ services:
       OTEL_EBPF_CONFIG_PATH: /etc/ebpf-config.yml
     volumes:
       - ./src/ebpf-instrumenter/config.yaml:/etc/ebpf-config.yml
-    
