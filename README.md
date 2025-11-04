@@ -48,6 +48,30 @@ The Temperature Simulator and Calculator services use the  [zero-code/auto instr
 
 The Data Processing service is written in Rust, which doesn’t has zero-code instrumentation, it is instrumented manually using  `actix-web-opentelemetry`  package.
 
+-----
+## eBPF Usage in This Repository
+
+This repository demonstrates how Extended Berkeley Packet Filter ([eBPF](https://en.wikipedia.org/wiki/EBPF)) and the OpenTelemetry eBPF Instrumentation library ([OBI](https://opentelemetry.io/docs/zero-code/obi/)) can be leveraged for advanced observability and telemetry collection. eBPF is a Linux kernel technology that enables safe, efficient execution of custom programs in kernel space, allowing for deep visibility into system and application behavior without modifying application code.
+
+### How eBPF Is Used
+
+- **Zero-code Instrumentation**: eBPF enables automatic instrumentation of supported languages and frameworks, capturing telemetry such as HTTP requests, database queries, and system calls without requiring code changes.
+- **Enhanced Telemetry**: eBPF collects low-level metrics and traces directly from the kernel, providing insights into network traffic, process activity, and resource usage.
+- **Integration with OpenTelemetry**: The eBPF agent runs alongside the application, exporting collected data to the OTel Collector, which then processes and forwards it to your chosen backend (e.g., Datadog, Prometheus).
+
+### Benefits
+
+- **No Code Changes Required**: eBPF-based instrumentation works out-of-the-box for supported runtimes, reducing developer effort.
+- **Performance**: eBPF programs run efficiently in kernel space, minimizing overhead.
+- **Security**: eBPF programs are verified for safety before execution, ensuring system stability.
+
+### Example
+
+In this repository, the Java service (Temperature Calculator) is instrumented using eBPF agents to automatically collect telemetry data. 
+
+For more details on eBPF and its integration with OpenTelemetry, see the [OpenTelemetry eBPF documentation](https://opentelemetry.io/docs/zero-code/obi/).
+
+-----
 ## Semantic Versioning
 
 This repository uses [GitVersion](https://gitversion.net/) to automatically generate semantic versions based on Git history and commit conventions.
