@@ -12,7 +12,7 @@ services:
     build:
       context: ./src/temperature-simulator
     ports:
-      - 8080:8080
+      - 9090:9090
     environment:
       - DATA_PROCESSING_URL=http://data-processing:9000/processTemperature
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otelcol:4317
@@ -91,3 +91,16 @@ services:
     restart: unless-stopped
     networks:
       - default
+
+  ebpf-instrumenter:
+    container_name: ebpf-instrumenter
+    image: docker.io/otel/ebpf-instrument:main
+    pid: 'host'
+    privileged: true
+    ports:
+      - 18443:18443
+    environment:
+      OTEL_EBPF_CONFIG_PATH: /etc/ebpf-config.yml
+    volumes:
+      - ./src/ebpf-instrumenter/config.yaml:/etc/ebpf-config.yml
+    
