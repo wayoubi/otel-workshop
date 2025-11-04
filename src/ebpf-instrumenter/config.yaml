@@ -1,0 +1,41 @@
+trace_printer: json
+#shutdown_timeout: 30s
+#channel_buffer_len: 33
+discovery:
+  instrument:
+    - open_ports: 8088
+#log_level: INFO
+
+#ebpf:
+#  wakeup_len: 100
+
+otel_metrics_export:
+  ttl: 5m
+  endpoint: http://otelcol:4317
+  protocol: grpc
+  features: ['network', 'network_inter_zone']
+  buckets:
+    duration_histogram: [0, 1, 2]
+  histogram_aggregation: base2_exponential_bucket_histogram
+
+otel_traces_export:
+  endpoint: http://otelcol:4317
+  protocol: grpc
+  instrumentations: ["http", "sql"]
+
+### Prometheus Export
+#prometheus_export:
+#  port: 8999
+#  path: /metrics
+#  extra_resource_attributes: ["deployment_environment"]
+#  ttl: 1s
+#  buckets:
+#    request_size_histogram: [0, 10, 20, 22]
+#    response_size_histogram: [0, 10, 20, 22]
+#  features:
+#    - application
+#    - network
+#    - application_process
+#    - application_span
+#    - application_service_graph
+#  instrumentations: ["http", "sql"]

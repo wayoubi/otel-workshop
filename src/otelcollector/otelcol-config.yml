@@ -30,12 +30,12 @@ service:
     traces:
       receivers: [otlp]
       processors: [resource, batch]
-      exporters: [debug, datadog, otlp/jaeger, datadog/connector]
+      exporters: [datadog, otlp/jaeger, datadog/connector] #debug
     metrics:
       receivers: [otlp, datadog/connector]
       processors: [resource, batch]
-      exporters: [debug, datadog]
+      exporters: [datadog]
     logs:
       receivers: [otlp]
       processors: [resource, batch]
-      exporters: [debug, datadog]
+      exporters: [datadog]
