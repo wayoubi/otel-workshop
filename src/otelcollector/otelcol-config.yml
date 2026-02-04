@@ -5,6 +5,19 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: 'temperature-simulator'
+          static_configs:
+            - targets: ['temperature-simulator:9090']
+          metrics_path: '/actuator/prometheus'
+          scrape_interval: 15s
+        - job_name: 'temperature-calculator'
+          static_configs:
+            - targets: ['temperature-calculator:8088']
+          metrics_path: '/actuator/prometheus'
+          scrape_interval: 15s
 processors:
   batch:
   resource:
@@ -32,7 +45,7 @@ service:
       processors: [resource, batch]
       exporters: [datadog, otlp/jaeger, datadog/connector] #debug
     metrics:
-      receivers: [otlp, datadog/connector]
+      receivers: [otlp, datadog/connector, prometheus]
       processors: [resource, batch]
       exporters: [datadog]
     logs:

@@ -1,0 +1,8 @@
+{
+    "kiroAgent.configureMCP": "Disabled",
+    "workbench.colorCustomizations": {
+        "editor.findMatchBackground": "#FFD700",      // main match color
+        "editor.findMatchHighlightBackground": "#FFA500", // other matches (optional)
+        "editor.findRangeHighlightBackground": "#FFFFE0"  // selection range highlight
+    }
+}

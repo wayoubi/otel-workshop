@@ -4,8 +4,6 @@ major-version-bump-message: \+semver:\s?(breaking|major)
 minor-version-bump-message: \+semver:\s?(feature|minor)
 patch-version-bump-message: \+semver:\s?(fix|patch)
 assembly-informational-format: '{Major}.{Minor}.{Patch}+{BranchName}.{ShortSha}'
-strategies:
-  - Mainline
 branches:
   pull-request:
     increment: Patch
